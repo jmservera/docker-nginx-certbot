@@ -1,5 +1,6 @@
 FROM nginx:1.19.7
 LABEL maintainer="Jonas Alfredsson <jonas.alfredsson@protonmail.com>"
+LABEL maintainer="Juan Manuel Servera http://github.com/jmservera"
 
 # Do a single run command to make the intermediary containers smaller.
 RUN set -ex && \
@@ -42,7 +43,9 @@ RUN set -ex && \
 # ACME challenge requests are correctly forwarded to certbot and then redirects
 # everything else to HTTPS.
     rm -f /etc/nginx/conf.d/*
-COPY nginx_conf.d/ /etc/nginx/conf.d/
+# It is copied to opt folder and the script will copy it to /etc/nginx/conf.d/
+COPY nginx_conf.d/  /opt/nginx/conf.d/ 
+#/etc/nginx/conf.d/
 
 # Copy in all our scripts and make them executable.
 COPY docker-entrypoint.d/ /docker-entrypoint.d
