@@ -21,17 +21,17 @@ volumes:
     driver: local
     driver_opts:
        type: none
-       device: $PWD/certs
+       device: /opt/nginx/certs
        o: bind
   conf:
     driver: local
     driver_opts:
       type: none
-      device: $PWD/conf.d
+      device: /opt/nginx/conf.d
       o: bind
   html:
     driver: local
     driver_opts:
       type: none
-      device: $PWD/html
+      device: /opt/nginx/html
       o: bind
