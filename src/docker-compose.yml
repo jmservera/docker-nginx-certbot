@@ -9,6 +9,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "8123:8123"
     volumes:
       - html:/etc/nginx/html:ro
       - conf:/etc/nginx/conf.d
