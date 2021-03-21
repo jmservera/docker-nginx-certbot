@@ -3,6 +3,8 @@ version: '3'
 services:
   nginx-proxy:
     build: .
+    environment:
+      - CERTBOT_EMAIL
     container_name: nginx-proxy
     ports:
       - "80:80"
