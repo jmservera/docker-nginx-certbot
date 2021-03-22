@@ -23,9 +23,9 @@ sudo mkdir -vp /opt/nginx/certs
 sudo mkdir -vp /opt/nginx/html
 
 # generate a localhost certificate to allow us create a sink for all the requests without a proper domain name
-sudo openssl req -newkey rsa:2048 -x509 -days 36500 -nodes  -out /opt/nginx/certs/localhost.crt   -keyout /opt/nginx/certs/localhost.pem  -subj "/C=WA/ST=Wakanda/L=Wakanda/O=IT/CN=localhost.local"
+sudo openssl req -newkey rsa:2048 -x509 -days 36500 -nodes -out /opt/nginx/certs/localhost.crt -keyout /opt/nginx/certs/localhost.key -subj "/C=WA/ST=Wakanda/L=Wakanda/O=IT/CN=localhost.local"
 
-# TODO: Use sed modify the conf.d/hassio.conf file
+# TODO: Use sed to modify the conf.d/hassio.conf file with the domain name
 sudo cp hassio.conf /opt/nginx/conf.d
 
 docker-compose up

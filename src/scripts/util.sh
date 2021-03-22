@@ -25,7 +25,6 @@ parse_primary_domains() {
 # this line, and a config file may have multiple server blocks. This method will
 # therefore try to extract all unique domain names and add them to the
 # certificate request being sent. Some things to think about:
-# Any server named with a single underscore is removed.
 # * No wildcard names. They are not supported by the authentication method used
 #   in this script and will most likely fail by certbot.
 # * Possible overlappings. This method will find all 'server_names' in a .conf
@@ -34,7 +33,7 @@ parse_primary_domains() {
 #   certificates. Should however work fine but is not best practice.
 #
 parse_server_names() {
-    sed -n -r -e 's&^\s*server_name\s+(.*);.*&\1&p' "$1" | xargs -n1 echo | uniq | sed '/^_$/d'
+    sed -n -r -e 's&^\s*server_name\s+(.*);.*&\1&p' "$1" | xargs -n1 echo | uniq
 }
 
 # Return all unique "ssl_certificate_key" file paths.
