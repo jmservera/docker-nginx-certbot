@@ -2,7 +2,7 @@ version: '3'
 
 services:
   nginx-proxy:
-    build: .
+    build: ../../src
     environment:
       - CERTBOT_EMAIL
     container_name: nginx-proxy
