@@ -12,7 +12,7 @@ services:
       - "8123:8123"
     volumes:
       - html:/etc/nginx/html:ro
-      - conf:/etc/nginx/conf.d
+      - conf:/etc/nginx/conf.d:rw
       - certs:/etc/letsencrypt:rw
     network_mode: bridge
 
